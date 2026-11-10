@@ -1,0 +1,874 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Kaminofen, Pelletofen und Gaskamin in Bedburg | Prometheus Ofenbau</title>
+  <meta name="description" content="Beratung, Planung, Verkauf, Einbau und Service in Bedburg. Über 50 Kaminöfen, Pelletöfen und Gaskamine in unserer 400 m² Ausstellung. Seit 1994.">
+  <link rel="canonical" href="https://prometheus-ofenbau.de/">
+  <meta property="og:title" content="Kaminofen, Pelletofen und Gaskamin in Bedburg | Prometheus Ofenbau">
+  <meta property="og:description" content="Beratung, Planung, Verkauf, Einbau und Service in Bedburg. Seit 1994.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="img/hero.jpg">
+  <link rel="icon" href="https://prometheus-ofenbau.de/storage/2022/07/favicon-100x100.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: '#E73043',
+            soft: '#F68C8C',
+            ink: '#1E1E1E',
+            body: '#333333',
+            paper: '#F6F6F6'
+          },
+          fontFamily: { sans: ['Poppins', 'sans-serif'] }
+        }
+      }
+    };
+  </script>
+
+  <style>
+    html { scroll-behavior: smooth; scroll-padding-top: 88px; }
+    body { font-family: 'Poppins', sans-serif; color: #333333; background: #ffffff; }
+
+    /* Scroll-Fortschritt oben */
+    #progress { transform-origin: 0 50%; transform: scaleX(0); }
+
+    /* Scroll-Reveal */
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity .8s ease, transform .8s ease; }
+    .reveal.is-visible { opacity: 1; transform: none; }
+    .reveal-delay-1 { transition-delay: .1s; }
+    .reveal-delay-2 { transition-delay: .2s; }
+    .reveal-delay-3 { transition-delay: .3s; }
+
+    /* Wort-für-Wort in der Hero-Überschrift */
+    .hw { display: inline-block; animation: wordIn .7s ease both; animation-delay: calc(var(--i) * 90ms + 150ms); }
+    @keyframes wordIn { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+
+    /* Wort-für-Wort-Statement, gesteuert per Scroll */
+    .statement .w { opacity: .18; transition: opacity .35s ease; }
+
+    /* Laufband */
+    .marquee-track { display: flex; width: max-content; animation: marquee 38s linear infinite; }
+    .marquee:hover .marquee-track { animation-play-state: paused; }
+    @keyframes marquee { to { transform: translateX(-50%); } }
+
+    /* Hover-Übergänge */
+    .btn { transition: transform .25s ease, box-shadow .25s ease, background-color .25s ease, color .25s ease; }
+    .btn:hover { transform: translateY(-2px); box-shadow: 0 10px 24px -10px rgba(231, 48, 67, .6); }
+    .card { transition: transform .35s ease, box-shadow .35s ease; }
+    .card:hover { transform: translateY(-4px); box-shadow: 0 18px 40px -20px rgba(0, 0, 0, .25); }
+    .lift img { transition: transform .6s ease; }
+    .lift:hover img { transform: scale(1.04); }
+    a.textlink { background-image: linear-gradient(currentColor, currentColor); background-size: 0 1px; background-position: 0 100%; background-repeat: no-repeat; transition: background-size .3s ease; }
+    a.textlink:hover { background-size: 100% 1px; }
+
+    details summary { list-style: none; cursor: pointer; }
+    details summary::-webkit-details-marker { display: none; }
+    details[open] .faq-icon { transform: rotate(45deg); }
+    .faq-icon { transition: transform .3s ease; }
+
+    /* Ofen-Zoom: Foto wird beim Scrollen in die Glut hineingezoomt */
+    #ofen-zoom .zoom-stage { opacity: 0; transform: translateY(16px); transition: opacity .6s ease, transform .6s ease; }
+    #ofen-zoom .zoom-stage.on { opacity: 1; transform: none; }
+    @media (prefers-reduced-motion: reduce) {
+      #ofen-zoom { height: auto !important; padding: 5rem 0; }
+      #ofen-zoom .zoom-sticky { position: relative !important; height: auto !important; min-height: 70vh; }
+      #ofen-zoom .zoom-grid { display: flex; flex-direction: column; gap: 2.5rem; }
+      #ofen-zoom .zoom-stage { opacity: 1; transform: none; transition: none; }
+    }
+
+    /* Barrierefreiheit: Bewegung reduzieren */
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .reveal { opacity: 1; transform: none; transition: none; }
+      .hw { animation: none; }
+      .marquee-track { animation: none; }
+      .statement .w { opacity: 1; transition: none; }
+      .btn, .card, .lift img, a.textlink { transition: none; }
+      .btn:hover, .card:hover, .lift:hover img { transform: none; box-shadow: none; }
+    }
+  </style>
+</head>
+<body class="antialiased">
+
+  <!-- Scroll-Fortschritt -->
+  <div id="progress" class="fixed top-0 left-0 right-0 h-[3px] bg-brand z-[60]"></div>
+
+  <!-- Header -->
+  <header id="site-header" class="fixed top-0 inset-x-0 z-50 bg-white/95 backdrop-blur transition-shadow duration-300">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 h-20 flex items-center justify-between gap-4">
+      <a href="#top" class="flex items-center shrink-0" aria-label="Prometheus Ofenbau, zur Startseite">
+        <img src="img/logo.png" alt="Prometheus Ofenbau" class="h-10 w-auto">
+      </a>
+
+      <nav class="hidden lg:flex items-center gap-8 text-[15px] text-ink" aria-label="Hauptnavigation">
+        <a href="#leistungen" class="textlink hover:text-brand transition-colors">Leistungen</a>
+        <a href="#ofenarten" class="textlink hover:text-brand transition-colors">Ofenarten</a>
+        <a href="#ueber-uns" class="textlink hover:text-brand transition-colors">Über uns</a>
+        <a href="#bewertungen" class="textlink hover:text-brand transition-colors">Bewertungen</a>
+        <a href="#faq" class="textlink hover:text-brand transition-colors">Fragen</a>
+      </nav>
+
+      <div class="flex items-center gap-3">
+        <a href="tel:+49227240970" class="btn hidden sm:inline-flex items-center gap-2 rounded-md bg-brand text-white text-[15px] font-medium px-5 py-2.5 hover:bg-[#c92a3b]">
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1z"/></svg>
+          02272 40970
+        </a>
+        <a href="#kontakt" class="btn sm:hidden inline-flex items-center rounded-md bg-brand text-white text-sm font-medium px-4 py-2" aria-label="Anrufen oder Termin anfragen">Anfrage</a>
+        <button id="nav-toggle" class="lg:hidden inline-flex items-center justify-center w-10 h-10 rounded-md border border-neutral-300" aria-expanded="false" aria-controls="mobile-nav" aria-label="Menü öffnen">
+          <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <nav id="mobile-nav" class="lg:hidden hidden border-t border-neutral-200 bg-white" aria-label="Mobile Navigation">
+      <div class="px-4 py-3 flex flex-col">
+        <a href="#leistungen" class="py-3 border-b border-neutral-100">Leistungen</a>
+        <a href="#ofenarten" class="py-3 border-b border-neutral-100">Ofenarten</a>
+        <a href="#ueber-uns" class="py-3 border-b border-neutral-100">Über uns</a>
+        <a href="#bewertungen" class="py-3 border-b border-neutral-100">Bewertungen</a>
+        <a href="#faq" class="py-3 border-b border-neutral-100">Fragen</a>
+        <a href="#kontakt" class="py-3 text-brand font-medium">Beratungstermin anfragen</a>
+      </div>
+    </nav>
+  </header>
+
+  <main id="top">
+
+    <!-- 1. Hero -->
+    <section class="relative pt-20 bg-paper overflow-hidden">
+      <div class="mx-auto max-w-7xl grid lg:grid-cols-2 min-h-[calc(100vh-5rem)]">
+        <div class="flex flex-col justify-center px-4 sm:px-6 lg:pl-6 lg:pr-12 py-16 lg:py-24">
+          <h1 class="text-[2.25rem] leading-[1.12] sm:text-5xl lg:text-[3.6rem] font-medium text-ink tracking-tight">
+            <span class="hw" style="--i:0">Kaminofen,</span>
+            <span class="hw" style="--i:1">Pelletofen</span>
+            <span class="hw" style="--i:2">und</span>
+            <span class="hw" style="--i:3">Gaskamin</span>
+            <span class="hw" style="--i:4">in</span>
+            <span class="hw" style="--i:5">Bedburg</span>
+          </h1>
+
+          <p class="mt-6 text-lg leading-relaxed text-body max-w-xl reveal is-visible">
+            Sind Sie auf der Suche nach einem Ofen, der perfekt zu Ihnen passt? Wir zeigen Ihnen die Unterschiede auf und finden den Ofen, der optimal auf Ihre Bedürfnisse zugeschnitten ist.
+          </p>
+
+          <ul class="mt-6 flex flex-wrap gap-2 text-sm text-body">
+            <li class="rounded-full bg-white px-4 py-1.5 shadow-sm">Seit 1994</li>
+            <li class="rounded-full bg-white px-4 py-1.5 shadow-sm">Über 50 Modelle ausgestellt</li>
+            <li class="rounded-full bg-white px-4 py-1.5 shadow-sm">Begleitung bis zur Abnahme</li>
+          </ul>
+
+          <div class="mt-10 flex flex-col sm:flex-row gap-3">
+            <a href="tel:+49227240970" class="btn inline-flex justify-center items-center gap-2 rounded-md bg-brand text-white font-medium px-7 py-3.5">
+              Jetzt anrufen
+            </a>
+            <a href="#kontakt" class="btn inline-flex justify-center items-center rounded-md border border-ink text-ink font-medium px-7 py-3.5 hover:bg-ink hover:text-white">
+              Beratung anfragen
+            </a>
+          </div>
+        </div>
+
+        <div class="relative min-h-[360px] lg:min-h-full">
+          <img src="img/hero.jpg" alt="Offener Kamin mit Holzfeuer in einem modernen Wohnraum, ausgeführt von Prometheus Ofenbau" class="absolute inset-0 w-full h-full object-cover" fetchpriority="high">
+          <div class="absolute inset-0 bg-gradient-to-r from-paper/40 via-transparent to-transparent lg:block hidden" aria-hidden="true"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 1b. Ofen-Zoom: beim Scrollen in die Glut hineinzoomen, Textstufen wechseln -->
+    <section id="ofen-zoom" class="relative bg-ink" style="height:300vh">
+      <div class="zoom-sticky sticky top-0 h-screen overflow-hidden">
+        <canvas id="zoom-canvas" class="absolute inset-0 w-full h-full" aria-hidden="true"></canvas>
+        <div class="absolute inset-0 bg-gradient-to-t from-ink via-ink/60 to-ink/10" aria-hidden="true"></div>
+        <div class="relative h-full mx-auto max-w-7xl px-4 sm:px-6 flex items-end pb-16 md:pb-24">
+          <div class="zoom-grid grid w-full">
+            <div class="zoom-stage col-start-1 row-start-1 max-w-xl text-white">
+              <h2 class="text-4xl md:text-5xl font-medium leading-tight">Feuer und Wärme, die zu Ihnen passen</h2>
+              <p class="mt-5 text-lg text-white/90">Prometheus ist Ihr Partner für individuelle Feuerträume.</p>
+            </div>
+            <div class="zoom-stage col-start-1 row-start-1 max-w-xl text-white">
+              <h2 class="text-4xl md:text-5xl font-medium leading-tight">Über 50 Modelle zum Anschauen</h2>
+              <p class="mt-5 text-lg text-white/90">In unserer 400 m² Ausstellung finden Sie den Ofen, der zu Ihrem Stil passt.</p>
+            </div>
+            <div class="zoom-stage col-start-1 row-start-1 max-w-xl text-white">
+              <h2 class="text-4xl md:text-5xl font-medium leading-tight">Ihr Wunschkamin, fotorealistisch geplant</h2>
+              <p class="mt-5 text-lg text-white/90">Mit moderner CAD-Technologie sehen Sie vor der Fertigung, wie Ihr Kamin in Ihrem Zuhause wirkt.</p>
+              <div class="mt-8 flex flex-wrap gap-4">
+                <a href="tel:+49227240970" class="btn inline-flex items-center rounded-md bg-brand text-white font-medium px-6 py-3.5">Jetzt anrufen</a>
+                <a href="#kontakt" class="btn inline-flex items-center rounded-md border border-white/70 font-medium px-6 py-3.5 hover:bg-white hover:text-ink">Beratung anfragen</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. Trust-Leiste mit zählenden Zahlen -->
+    <section class="bg-white border-b border-neutral-200" aria-label="Zahlen zu Prometheus Ofenbau">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 py-12 grid grid-cols-2 lg:grid-cols-4 gap-8 text-center">
+        <div class="reveal">
+          <p class="text-4xl sm:text-5xl font-semibold text-ink"><span data-count="50" data-decimals="0">50</span>+</p>
+          <p class="mt-2 text-sm text-body">Öfen und Kamine in der Ausstellung</p>
+        </div>
+        <div class="reveal reveal-delay-1">
+          <p class="text-4xl sm:text-5xl font-semibold text-ink"><span data-count="400" data-decimals="0">400</span> m²</p>
+          <p class="mt-2 text-sm text-body">Ausstellungsfläche in Bedburg</p>
+        </div>
+        <div class="reveal reveal-delay-2">
+          <p class="text-4xl sm:text-5xl font-semibold text-ink"><span data-count="84" data-decimals="0">84</span></p>
+          <p class="mt-2 text-sm text-body">Bewertungen auf Google</p>
+        </div>
+        <div class="reveal reveal-delay-3">
+          <p class="text-4xl sm:text-5xl font-semibold text-ink"><span data-count="4.9" data-decimals="1">4,9</span> <span class="text-brand text-3xl align-middle" aria-hidden="true">★</span></p>
+          <p class="mt-2 text-sm text-body">Durchschnitt von 5 Sternen</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. Laufband mit Herstellern (Widget) -->
+    <section class="marquee bg-white py-10 overflow-hidden border-b border-neutral-200" aria-label="Hersteller, mit denen Prometheus Ofenbau arbeitet">
+      <div class="marquee-track items-center gap-16 pr-16" id="marquee-a">
+        <img src="img/62a1191102e22de820c05812_astroflamm.svg" alt="Astroflamm" class="h-9 w-auto opacity-70 hover:opacity-100 transition-opacity">
+        <img src="img/62a11a25c21b4625e5fb9d82_sikken.svg" alt="Sikken" class="h-9 w-auto opacity-70 hover:opacity-100 transition-opacity">
+        <img src="img/62a119128db781d55c4590e3_rika.svg" alt="Rika" class="h-9 w-auto opacity-70 hover:opacity-100 transition-opacity">
+        <img src="img/62a1fe4e8d83fa064a25fc44_attika_logo.svg" alt="Attika" class="h-9 w-auto opacity-70 hover:opacity-100 transition-opacity">
+        <img src="img/62a204cd577e25103dfc380b_tiba.svg" alt="Tiba" class="h-9 w-auto opacity-70 hover:opacity-100 transition-opacity">
+        <img src="img/62a1fee2eff9d39155392fae_skantherm.svg" alt="Skantherm" class="h-9 w-auto opacity-70 hover:opacity-100 transition-opacity">
+        <img src="img/62a11b370cfd944318fc9fc1_Logo_EHV_Ofen_mittig_gold.svg" alt="EHV Ofen" class="h-9 w-auto opacity-70 hover:opacity-100 transition-opacity">
+        <img src="img/62a2047cf02ef6218c429cd3_kalfire.svg" alt="Kalfire" class="h-9 w-auto opacity-70 hover:opacity-100 transition-opacity">
+      </div>
+    </section>
+
+    <!-- 4. Leistungen -->
+    <section id="leistungen" class="py-20 lg:py-28 bg-white">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6">
+        <h2 class="reveal text-3xl sm:text-4xl font-medium text-ink max-w-3xl leading-tight">Vom ersten Gespräch bis zur Abnahme durch den Schornsteinfeger</h2>
+
+        <div class="mt-16 grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+          <div class="reveal lift rounded-lg overflow-hidden bg-paper">
+            <img src="img/Kaminofen-klein.jpg" alt="Kaminofen aus dem Sortiment von Prometheus Ofenbau" class="w-full aspect-square object-cover" loading="lazy">
+          </div>
+          <div class="reveal">
+            <h3 class="text-2xl font-medium text-ink">Verkauf in unserer 400 m² Ausstellung</h3>
+            <p class="mt-4 text-body leading-relaxed">Über 50 Kachelöfen, Kaminanlagen und Kaminöfen zum Anschauen. Lassen Sie sich von der Vielfalt inspirieren und finden Sie den Ofen, der perfekt zu Ihnen passt.</p>
+            <a href="https://prometheus-ofenbau.de/produkte" class="textlink mt-6 inline-block text-brand font-medium">Alle Öfen ansehen</a>
+          </div>
+        </div>
+
+        <div class="mt-20 grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+          <div class="reveal order-2 lg:order-1">
+            <h3 class="text-2xl font-medium text-ink">Einbau in Abstimmung mit Ihrem Architekten</h3>
+            <p class="mt-4 text-body leading-relaxed">Schon bei der Planung stimmen wir uns mit Ihrem Architekten, Innenarchitekten und dem zuständigen Schornsteinfeger ab. Das sorgt für eine sorglose Integration in Ihr Zuhause und eine reibungslose Abnahme.</p>
+            <a href="#kontakt" class="textlink mt-6 inline-block text-brand font-medium">Einbau besprechen</a>
+          </div>
+          <div class="reveal reveal-delay-1 lift rounded-lg overflow-hidden bg-paper order-1 lg:order-2">
+            <img src="img/Kamineinsatz-klein.jpg" alt="Kamineinsatz von Prometheus Ofenbau" class="w-full aspect-square object-cover" loading="lazy">
+          </div>
+        </div>
+
+        <div class="reveal mt-20 border-t border-neutral-200 pt-12 grid md:grid-cols-3 gap-10">
+          <div>
+            <h3 class="font-semibold text-ink">Beratung</h3>
+            <p class="mt-2 text-body leading-relaxed">Wir helfen Ihnen mit Herz und Fachwissen, den richtigen Ofen zu finden und zeigen Ihnen die Unterschiede auf.</p>
+          </div>
+          <div>
+            <h3 class="font-semibold text-ink">Planung</h3>
+            <p class="mt-2 text-body leading-relaxed">Ihr Wunschkamin in fotorealistischer Darstellung. Mit moderner CAD-Technologie sehen Sie vor der Fertigung, wie er in Ihrem Zuhause wirkt.</p>
+          </div>
+          <div>
+            <h3 class="font-semibold text-ink">Service</h3>
+            <p class="mt-2 text-body leading-relaxed">Wartung und Inspektion nach jeder Heizperiode durch einen qualifizierten Fachmann, auch für bereits vorhandene Feuerstätten.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. Ofenarten (Produktzugang mit Fotos) -->
+    <section id="ofenarten" class="py-20 lg:py-28 bg-paper">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6">
+        <h2 class="reveal text-3xl sm:text-4xl font-medium text-ink max-w-3xl leading-tight">Vier Ofenarten, die wir ausstellen und einbauen</h2>
+
+        <div class="mt-12 grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <a href="https://prometheus-ofenbau.de/produkt-kategorie/kaminofen" class="reveal card group block bg-white rounded-lg overflow-hidden">
+            <img src="img/Kaminofen-klein.jpg" alt="Kaminofen" class="w-full aspect-square object-cover" loading="lazy">
+            <div class="p-5">
+              <h3 class="font-semibold text-ink">Kaminofen</h3>
+              <p class="mt-1 text-sm text-body">Freistehend, mit echtem Holzfeuer</p>
+              <span class="mt-3 inline-block text-sm text-brand font-medium group-hover:underline">Ansehen</span>
+            </div>
+          </a>
+          <a href="https://prometheus-ofenbau.de/produkt-kategorie/pelletofen" class="reveal reveal-delay-1 card group block bg-white rounded-lg overflow-hidden">
+            <img src="img/Pelletofen-klein.jpg" alt="Pelletofen" class="w-full aspect-square object-cover" loading="lazy">
+            <div class="p-5">
+              <h3 class="font-semibold text-ink">Pelletofen</h3>
+              <p class="mt-1 text-sm text-body">Brennt mit Holzpellets</p>
+              <span class="mt-3 inline-block text-sm text-brand font-medium group-hover:underline">Ansehen</span>
+            </div>
+          </a>
+          <a href="https://prometheus-ofenbau.de/produkt-kategorie/gaskamin" class="reveal reveal-delay-2 card group block bg-white rounded-lg overflow-hidden">
+            <img src="img/Gaskamin-klein.jpg" alt="Gaskamin" class="w-full aspect-square object-cover" loading="lazy">
+            <div class="p-5">
+              <h3 class="font-semibold text-ink">Gaskamin</h3>
+              <p class="mt-1 text-sm text-body">Praktisch und einfach zu bedienen</p>
+              <span class="mt-3 inline-block text-sm text-brand font-medium group-hover:underline">Ansehen</span>
+            </div>
+          </a>
+          <a href="https://prometheus-ofenbau.de/produkte" class="reveal reveal-delay-3 card group block bg-white rounded-lg overflow-hidden">
+            <img src="img/Kamineinsatz-klein.jpg" alt="Kamineinsatz" class="w-full aspect-square object-cover" loading="lazy">
+            <div class="p-5">
+              <h3 class="font-semibold text-ink">Kamineinsatz</h3>
+              <p class="mt-1 text-sm text-body">Für eine bestehende Feuerstelle</p>
+              <span class="mt-3 inline-block text-sm text-brand font-medium group-hover:underline">Ansehen</span>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. Warum wir / USPs -->
+    <section class="py-20 lg:py-28 bg-white">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6">
+        <h2 class="reveal text-3xl sm:text-4xl font-medium text-ink max-w-3xl leading-tight">Was Kunden bei Prometheus Ofenbau erwarten können</h2>
+
+        <div class="mt-12 grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div class="reveal card bg-paper rounded-lg p-7">
+            <h3 class="text-lg font-semibold text-ink">Planung vor dem Kauf</h3>
+            <p class="mt-3 text-body leading-relaxed">Ihr Wunschkamin in fotorealistischer Darstellung, bevor die Fertigung beginnt.</p>
+          </div>
+          <div class="reveal reveal-delay-1 card bg-paper rounded-lg p-7">
+            <h3 class="text-lg font-semibold text-ink">Faire Preise</h3>
+            <p class="mt-3 text-body leading-relaxed">Erstklassige Produkte und durchdachte Konzepte zu fairen Preisen.</p>
+          </div>
+          <div class="reveal reveal-delay-2 card bg-paper rounded-lg p-7">
+            <h3 class="text-lg font-semibold text-ink">Begleitung bis zur Abnahme</h3>
+            <p class="mt-3 text-body leading-relaxed">Von der ersten Beratung bis zur Abnahme durch den Schornsteinfeger stehen wir an Ihrer Seite.</p>
+          </div>
+          <div class="reveal reveal-delay-3 card bg-paper rounded-lg p-7">
+            <h3 class="text-lg font-semibold text-ink">Seit 1994 im Kaminbau</h3>
+            <p class="mt-3 text-body leading-relaxed">Leidenschaft für Kaminbau mit einer großen Ausstellung direkt in Bedburg.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7. Projekt-Finder (Widget) -->
+    <section class="py-20 lg:py-28 bg-paper">
+      <div class="mx-auto max-w-4xl px-4 sm:px-6">
+        <h2 class="reveal text-3xl sm:text-4xl font-medium text-ink leading-tight">Finden Sie in zwei Schritten die passende Ofenart</h2>
+        <p class="reveal mt-4 text-body">Eine erste Orientierung. Die Beratung vor Ort klärt die Details für Ihr Zuhause.</p>
+
+        <div class="reveal mt-10 bg-white rounded-xl shadow-sm p-6 sm:p-10">
+          <p class="font-medium text-ink">1. Welchen Brennstoff bevorzugen Sie?</p>
+          <div id="finder-fuel" class="mt-4 grid grid-cols-2 sm:grid-cols-4 gap-3" role="group" aria-label="Brennstoff wählen">
+            <button type="button" data-fuel="holz" class="finder-btn btn rounded-md border border-neutral-300 px-4 py-3 text-sm hover:border-brand">Holz</button>
+            <button type="button" data-fuel="pellet" class="finder-btn btn rounded-md border border-neutral-300 px-4 py-3 text-sm hover:border-brand">Pellets</button>
+            <button type="button" data-fuel="gas" class="finder-btn btn rounded-md border border-neutral-300 px-4 py-3 text-sm hover:border-brand">Gas</button>
+            <button type="button" data-fuel="warmluft" class="finder-btn btn rounded-md border border-neutral-300 px-4 py-3 text-sm hover:border-brand">Warme Luft</button>
+          </div>
+
+          <div id="finder-place-wrap" class="hidden mt-8">
+            <p class="font-medium text-ink">2. Soll der Ofen frei im Raum stehen oder in eine Feuerstelle eingesetzt werden?</p>
+            <div id="finder-place" class="mt-4 grid sm:grid-cols-2 gap-3" role="group" aria-label="Aufstellung wählen">
+              <button type="button" data-place="frei" class="finder-btn btn rounded-md border border-neutral-300 px-4 py-3 text-sm hover:border-brand">Frei im Raum</button>
+              <button type="button" data-place="einsatz" class="finder-btn btn rounded-md border border-neutral-300 px-4 py-3 text-sm hover:border-brand">In eine Feuerstelle</button>
+            </div>
+          </div>
+
+          <div id="finder-result" class="hidden mt-10 rounded-lg bg-paper p-6" aria-live="polite">
+            <p class="text-sm text-body">Unsere Empfehlung für Sie</p>
+            <p id="finder-name" class="mt-1 text-2xl font-medium text-ink"></p>
+            <p id="finder-text" class="mt-3 text-body leading-relaxed"></p>
+            <button type="button" id="finder-ask" class="btn mt-6 inline-flex items-center rounded-md bg-brand text-white font-medium px-6 py-3">Beratung zu diesem Ofen anfragen</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 8. CTA-Block Mitte -->
+    <section class="bg-brand text-white py-16 lg:py-20">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 grid lg:grid-cols-2 gap-8 items-center">
+        <div class="reveal">
+          <h2 class="text-3xl sm:text-4xl font-medium leading-tight">Ihr Wunschofen beginnt mit einem Gespräch</h2>
+          <p class="mt-4 text-white/90 leading-relaxed max-w-xl">Rufen Sie uns an oder schreiben Sie uns. Wir beraten Sie gern individuell zu Ihrem Zuhause und Ihren Wünschen.</p>
+        </div>
+        <div class="reveal reveal-delay-1 flex flex-col sm:flex-row lg:justify-end gap-3">
+          <a href="tel:+49227240970" class="btn inline-flex justify-center items-center rounded-md bg-white text-brand font-semibold px-7 py-4 hover:bg-ink hover:text-white">Jetzt anrufen: 02272 40970</a>
+          <a href="#kontakt" class="btn inline-flex justify-center items-center rounded-md border border-white px-7 py-4 font-medium hover:bg-white hover:text-brand">Beratungstermin anfragen</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 9. Über uns mit Wort-für-Wort-Statement (Widget) -->
+    <section id="ueber-uns" class="py-20 lg:py-28 bg-white">
+      <div class="mx-auto max-w-4xl px-4 sm:px-6">
+        <h2 class="reveal text-3xl sm:text-4xl font-medium text-ink leading-tight">Seit 1994 Leidenschaft für Kaminbau in Bedburg</h2>
+
+        <p class="reveal mt-8 text-body leading-relaxed text-lg">Prometheus, Ihr Partner für individuelle Feuerträume. Wir sind darauf spezialisiert, Ihre Wünsche rund um Feuer und Wärme in die Realität umzusetzen. Mit höchster Qualität, fachlicher Kompetenz und kreativen Lösungen bieten wir genau das, was Sie sich vorstellen.</p>
+
+        <p id="statement" class="statement mt-12 text-2xl sm:text-3xl leading-relaxed font-light text-ink">Wir helfen Ihnen gerne, zeigen Ihnen die Unterschiede auf und finden den Ofen, der optimal auf Ihre Bedürfnisse zugeschnitten ist.</p>
+      </div>
+    </section>
+
+    <!-- 10. Bewertungen -->
+    <section id="bewertungen" class="py-20 lg:py-28 bg-paper">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6">
+        <h2 class="reveal text-3xl sm:text-4xl font-medium text-ink max-w-3xl leading-tight">Was Kunden nach Beratung und Einbau berichten</h2>
+        <p class="reveal mt-4 text-body">4,9 von 5 Sternen bei 84 Bewertungen auf Google (Stand laut Website: 02.05.2025).</p>
+
+        <div class="mt-12 grid md:grid-cols-2 gap-6">
+          <figure class="reveal card bg-white rounded-lg p-8">
+            <p class="text-brand tracking-widest" aria-label="5 von 5 Sternen">★★★★★</p>
+            <blockquote class="mt-4 text-body leading-relaxed">„Beratung, Einbau und die gesamte Abwicklung waren einfach spitze. Wir sind sehr glücklich und werden euch auf alle Fälle weiterempfehlen!“</blockquote>
+            <figcaption class="mt-5 text-sm font-medium text-ink">Damian S.</figcaption>
+          </figure>
+          <figure class="reveal reveal-delay-1 card bg-white rounded-lg p-8">
+            <p class="text-brand tracking-widest" aria-label="5 von 5 Sternen">★★★★★</p>
+            <blockquote class="mt-4 text-body leading-relaxed">„Zwei sehr schöne Kamine gekauft nach toller Beratung und nach meinen Wünschen perfekt eingebaut. Bin sehr zufrieden.“</blockquote>
+            <figcaption class="mt-5 text-sm font-medium text-ink">Ina S.</figcaption>
+          </figure>
+          <figure class="reveal card bg-white rounded-lg p-8">
+            <p class="text-brand tracking-widest" aria-label="5 von 5 Sternen">★★★★★</p>
+            <blockquote class="mt-4 text-body leading-relaxed">„Auch als wir kleine Reklamationen hatten, wurde uns freundlichst geholfen und die Mängel beseitigt. Top Kundenservice.“</blockquote>
+            <figcaption class="mt-5 text-sm font-medium text-ink">Thomas H.</figcaption>
+          </figure>
+          <figure class="reveal reveal-delay-1 card bg-white rounded-lg p-8">
+            <p class="text-brand tracking-widest" aria-label="5 von 5 Sternen">★★★★★</p>
+            <blockquote class="mt-4 text-body leading-relaxed">„Kann die Fa. Prometheus sehr empfehlen. Beratung, Bestellvorgang und Montage 1 A.“</blockquote>
+            <figcaption class="mt-5 text-sm font-medium text-ink">H.G.S.</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- 11. FAQ -->
+    <section id="faq" class="py-20 lg:py-28 bg-white">
+      <div class="mx-auto max-w-3xl px-4 sm:px-6">
+        <h2 class="reveal text-3xl sm:text-4xl font-medium text-ink leading-tight">Häufige Fragen zu Kamin, Installation und Wartung</h2>
+
+        <div class="mt-12 divide-y divide-neutral-200 border-y border-neutral-200">
+          <details class="reveal group py-5">
+            <summary class="flex justify-between items-center gap-6 font-medium text-ink">Welcher Kamintyp passt zu meinem Zuhause? <span class="faq-icon text-brand text-2xl leading-none" aria-hidden="true">+</span></summary>
+            <p class="mt-4 text-body leading-relaxed">Das hängt von Ihren Wünschen ab: Holz bietet das echte Knistern und Aroma einer Flamme, Gas ist praktisch und einfach zu bedienen, Pellets sind eine Alternative mit Holzpellets. Wir beraten Sie gern, welches System zu Ihrer Wohnsituation passt.</p>
+          </details>
+          <details class="reveal group py-5">
+            <summary class="flex justify-between items-center gap-6 font-medium text-ink">Brauche ich einen Schornstein? <span class="faq-icon text-brand text-2xl leading-none" aria-hidden="true">+</span></summary>
+            <p class="mt-4 text-body leading-relaxed">Holzöfen brauchen immer ein geeignetes Abzugssystem. Gaskamine mit direkter Belüftung kommen oft mit einer Wandentlüftung aus. Unsere Fachleute prüfen bei der Planung, was bei Ihnen baulich möglich ist.</p>
+          </details>
+          <details class="reveal group py-5">
+            <summary class="flex justify-between items-center gap-6 font-medium text-ink">Was beinhaltet die Installation? <span class="faq-icon text-brand text-2xl leading-none" aria-hidden="true">+</span></summary>
+            <p class="mt-4 text-body leading-relaxed">Planung, Vorbereitung des Standorts, Einbau, Anpassung an die bestehende Bausubstanz und die Abnahme durch den Schornsteinfeger. Den gesamten Ablauf begleiten wir für Sie.</p>
+          </details>
+          <details class="reveal group py-5">
+            <summary class="flex justify-between items-center gap-6 font-medium text-ink">Welche Genehmigungen brauche ich? <span class="faq-icon text-brand text-2xl leading-none" aria-hidden="true">+</span></summary>
+            <p class="mt-4 text-body leading-relaxed">In Deutschland sind je nach Bundesland und Kamintyp unterschiedliche Schritte nötig, etwa eine Baugenehmigung oder -anzeige, die Abnahme durch den Schornsteinfeger und eventuell die Zustimmung des Vermieters oder der Eigentümergemeinschaft. Unser Team unterstützt Sie bei den Formalitäten.</p>
+          </details>
+          <details class="reveal group py-5">
+            <summary class="flex justify-between items-center gap-6 font-medium text-ink">Wie oft muss mein Ofen gewartet werden? <span class="faq-icon text-brand text-2xl leading-none" aria-hidden="true">+</span></summary>
+            <p class="mt-4 text-body leading-relaxed">Jede Feuerstätte sollte nach jeder Heizperiode von einem qualifizierten Fachmann überprüft werden. So fallen Schäden am Korpus oder Verschleiß in der Brennkammer früh auf. Auch für bereits vorhandene Öfen bieten wir Wartung und Inspektion an.</p>
+          </details>
+          <details class="reveal group py-5">
+            <summary class="flex justify-between items-center gap-6 font-medium text-ink">Kann ich einen Kamin nachträglich einbauen lassen? <span class="faq-icon text-brand text-2xl leading-none" aria-hidden="true">+</span></summary>
+            <p class="mt-4 text-body leading-relaxed">In den meisten Fällen ja. Entscheidend sind der vorhandene oder nachrüstbare Schornstein, der Platzbedarf und die Sicherheitsabstände. Gern prüfen wir das vor Ort mit Ihnen.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- 12. Kontakt und Formular -->
+    <section id="kontakt" class="py-20 lg:py-28 bg-paper">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 grid lg:grid-cols-2 gap-12">
+        <div class="reveal">
+          <h2 class="text-3xl sm:text-4xl font-medium text-ink leading-tight">Beratungstermin vereinbaren oder Fragen stellen</h2>
+          <p class="mt-4 text-body leading-relaxed">Schreiben Sie uns kurz, worum es geht. Wir melden uns zurück.</p>
+
+          <form id="contact-form" class="mt-10 grid gap-5" novalidate>
+            <div>
+              <label for="f-name" class="block text-sm font-medium text-ink">Name *</label>
+              <input id="f-name" name="name" type="text" required autocomplete="name" class="mt-2 w-full rounded-md border border-neutral-300 bg-white px-4 py-3 focus:outline-none focus:border-brand focus:ring-2 focus:ring-brand/20">
+            </div>
+            <div>
+              <label for="f-kontakt" class="block text-sm font-medium text-ink">E-Mail oder Telefon *</label>
+              <input id="f-kontakt" name="kontakt" type="text" required autocomplete="email" class="mt-2 w-full rounded-md border border-neutral-300 bg-white px-4 py-3 focus:outline-none focus:border-brand focus:ring-2 focus:ring-brand/20">
+            </div>
+            <div>
+              <label for="f-anliegen" class="block text-sm font-medium text-ink">Anliegen</label>
+              <select id="f-anliegen" name="anliegen" class="mt-2 w-full rounded-md border border-neutral-300 bg-white px-4 py-3 focus:outline-none focus:border-brand focus:ring-2 focus:ring-brand/20">
+                <option>Allgemeine Beratung</option>
+                <option>Kaminofen</option>
+                <option>Pelletofen</option>
+                <option>Gaskamin</option>
+                <option>Kamineinsatz</option>
+                <option>Warmluftofen</option>
+                <option>Planung eines Wunschkamins</option>
+                <option>Wartung und Inspektion</option>
+              </select>
+            </div>
+            <div>
+              <label for="f-nachricht" class="block text-sm font-medium text-ink">Ihre Nachricht</label>
+              <textarea id="f-nachricht" name="nachricht" rows="4" class="mt-2 w-full rounded-md border border-neutral-300 bg-white px-4 py-3 focus:outline-none focus:border-brand focus:ring-2 focus:ring-brand/20"></textarea>
+            </div>
+            <label class="flex items-start gap-3 text-sm text-body">
+              <input id="f-datenschutz" name="datenschutz" type="checkbox" required class="mt-1 h-4 w-4 accent-brand">
+              <span>Ich bin mit der Datenschutzvereinbarung einverstanden und dass meine Daten verwendet werden, um meine Anfrage zu bearbeiten.</span>
+            </label>
+            <div>
+              <button type="submit" class="btn inline-flex items-center rounded-md bg-brand text-white font-medium px-8 py-3.5">Anfrage senden</button>
+              <p id="form-status" class="mt-4 text-sm text-body" aria-live="polite"></p>
+            </div>
+          </form>
+        </div>
+
+        <div class="reveal reveal-delay-1 flex flex-col gap-8">
+          <div class="bg-white rounded-lg p-8 shadow-sm">
+            <h3 class="font-semibold text-ink">Prometheus Ofenbau</h3>
+            <p class="mt-3 text-body leading-relaxed">Adolf-Silverberg-Straße 47<br>50181 Bedburg</p>
+            <p class="mt-4 text-body">Telefon: <a href="tel:+49227240970" class="text-brand font-medium">02272 40970</a><br>Fax: 02270 409777<br>E-Mail: <a href="mailto:info@prometheus-ofenbau.de" class="text-brand font-medium">info@prometheus-ofenbau.de</a></p>
+            <a href="https://www.google.com/maps/search/?api=1&amp;query=Prometheus+Ofenbau+Adolf-Silverberg-Stra%C3%9Fe+47+50181+Bedburg" target="_blank" rel="noopener" class="textlink mt-5 inline-block text-brand font-medium">Route planen</a>
+          </div>
+          <div class="bg-white rounded-lg p-8 shadow-sm">
+            <h3 class="font-semibold text-ink">Öffnungszeiten</h3>
+            <dl class="mt-4 grid grid-cols-2 gap-y-2 text-body">
+              <dt>Montag bis Freitag</dt><dd>9:00 bis 18:00 Uhr</dd>
+              <dt>Samstag</dt><dd>10:00 bis 15:00 Uhr</dd>
+            </dl>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-white border-t border-neutral-200">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 py-12 flex flex-col md:flex-row md:items-center md:justify-between gap-8">
+      <img src="img/logo.png" alt="Prometheus Ofenbau" class="h-10 w-auto">
+      <nav class="flex flex-wrap gap-6 text-sm text-body" aria-label="Rechtliches">
+        <a href="https://prometheus-ofenbau.de/impressum" class="textlink hover:text-brand">Impressum</a>
+        <a href="https://prometheus-ofenbau.de/datenschutzerklaerung" class="textlink hover:text-brand">Datenschutz</a>
+        <a href="https://prometheus-ofenbau.de/agb" class="textlink hover:text-brand">AGB</a>
+      </nav>
+      <p class="text-sm text-body">© Prometheus Ofenbau, Bedburg</p>
+    </div>
+  </footer>
+
+  <!-- Sticky Telefonbutton für Mobil -->
+  <a href="tel:+49227240970" class="sm:hidden fixed bottom-4 right-4 z-40 inline-flex items-center gap-2 rounded-full bg-brand text-white font-medium px-5 py-3 shadow-lg" aria-label="Jetzt anrufen">
+    Anrufen
+  </a>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "Prometheus Ofenbau",
+    "description": "Beratung, Planung, Verkauf, Einbau und Service für Kaminöfen, Pelletöfen, Gaskamine und Warmluftöfen in Bedburg.",
+    "url": "https://prometheus-ofenbau.de/",
+    "telephone": "+49 2272 40970",
+    "faxNumber": "+49 2270 409777",
+    "email": "info@prometheus-ofenbau.de",
+    "foundingDate": "1994",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Adolf-Silverberg-Straße 47",
+      "postalCode": "50181",
+      "addressLocality": "Bedburg",
+      "addressCountry": "DE"
+    },
+    "openingHoursSpecification": [
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "09:00", "closes": "18:00" },
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": "Saturday", "opens": "10:00", "closes": "15:00" }
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      { "@type": "Question", "name": "Welcher Kamintyp passt zu meinem Zuhause?", "acceptedAnswer": { "@type": "Answer", "text": "Das hängt von Ihren Wünschen ab: Holz bietet das echte Knistern und Aroma einer Flamme, Gas ist praktisch und einfach zu bedienen, Pellets sind eine Alternative mit Holzpellets. Wir beraten Sie gern, welches System zu Ihrer Wohnsituation passt." } },
+      { "@type": "Question", "name": "Brauche ich einen Schornstein?", "acceptedAnswer": { "@type": "Answer", "text": "Holzöfen brauchen immer ein geeignetes Abzugssystem. Gaskamine mit direkter Belüftung kommen oft mit einer Wandentlüftung aus. Unsere Fachleute prüfen bei der Planung, was bei Ihnen baulich möglich ist." } },
+      { "@type": "Question", "name": "Was beinhaltet die Installation?", "acceptedAnswer": { "@type": "Answer", "text": "Planung, Vorbereitung des Standorts, Einbau, Anpassung an die bestehende Bausubstanz und die Abnahme durch den Schornsteinfeger. Den gesamten Ablauf begleiten wir für Sie." } },
+      { "@type": "Question", "name": "Welche Genehmigungen brauche ich?", "acceptedAnswer": { "@type": "Answer", "text": "In Deutschland sind je nach Bundesland und Kamintyp unterschiedliche Schritte nötig, etwa eine Baugenehmigung oder -anzeige, die Abnahme durch den Schornsteinfeger und eventuell die Zustimmung des Vermieters oder der Eigentümergemeinschaft. Unser Team unterstützt Sie bei den Formalitäten." } },
+      { "@type": "Question", "name": "Wie oft muss mein Ofen gewartet werden?", "acceptedAnswer": { "@type": "Answer", "text": "Jede Feuerstätte sollte nach jeder Heizperiode von einem qualifizierten Fachmann überprüft werden. Auch für bereits vorhandene Öfen bieten wir Wartung und Inspektion an." } },
+      { "@type": "Question", "name": "Kann ich einen Kamin nachträglich einbauen lassen?", "acceptedAnswer": { "@type": "Answer", "text": "In den meisten Fällen ja. Entscheidend sind der vorhandene oder nachrüstbare Schornstein, der Platzbedarf und die Sicherheitsabstände. Gern prüfen wir das vor Ort mit Ihnen." } }
+    ]
+  }
+  </script>
+
+  <script>
+    (function () {
+      var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      /* Header, Fortschritt und Wort-Statement per Scroll (ein gebündelter Listener) */
+      var progress = document.getElementById('progress');
+      var header = document.getElementById('site-header');
+      var statement = document.getElementById('statement');
+      var words = [];
+
+      if (statement) {
+        var parts = statement.textContent.trim().split(/\s+/);
+        statement.textContent = '';
+        parts.forEach(function (word, i) {
+          var span = document.createElement('span');
+          span.className = 'w';
+          span.textContent = word;
+          statement.appendChild(span);
+          if (i < parts.length - 1) statement.appendChild(document.createTextNode(' '));
+          words.push(span);
+        });
+        if (reduce) words.forEach(function (w) { w.style.opacity = 1; });
+      }
+
+      /* Ofen-Zoom: Bildfolge aus dem Video, der Scroll steuert das Einzelbild, Textstufen wechseln */
+      var zoomSec = document.getElementById('ofen-zoom');
+      var zoomCanvas = document.getElementById('zoom-canvas');
+      var zoomStages = zoomSec ? zoomSec.querySelectorAll('.zoom-stage') : [];
+      var zctx = null, zoomFrames = [], zoomCur = 0, zoomTarget = 0;
+      var ZN = 150;
+      function zDraw() {
+        var img = zoomFrames[Math.round(zoomCur)];
+        if (!img) { for (var k = Math.round(zoomCur); k >= 0; k--) { if (zoomFrames[k]) { img = zoomFrames[k]; break; } } }
+        if (!img) return;
+        var w = zoomCanvas.clientWidth, h = zoomCanvas.clientHeight;
+        var s = Math.max(w / img.width, h / img.height);
+        var dw = img.width * s, dh = img.height * s;
+        zctx.clearRect(0, 0, w, h);
+        zctx.drawImage(img, (w - dw) / 2, (h - dh) / 2, dw, dh);
+      }
+      function zSize() {
+        var dpr = Math.min(window.devicePixelRatio || 1, 2);
+        zoomCanvas.width = zoomCanvas.clientWidth * dpr;
+        zoomCanvas.height = zoomCanvas.clientHeight * dpr;
+        zctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+        zDraw();
+      }
+      function zoomUpdate() {
+        var r = zoomSec.getBoundingClientRect();
+        var total = zoomSec.offsetHeight - window.innerHeight;
+        var p = Math.min(Math.max(-r.top / total, 0), 1);
+        zoomTarget = reduce ? 0 : p * (ZN - 1);
+        var idx = Math.min(Math.floor(p * zoomStages.length), zoomStages.length - 1);
+        zoomStages.forEach(function (s, i) { s.classList.toggle('on', i === idx); });
+      }
+      function zLoop() {
+        var d = zoomTarget - zoomCur;
+        if (Math.abs(d) > 0.01) { zoomCur += d * 0.25; zDraw(); }
+        else if (zoomCur !== zoomTarget) { zoomCur = zoomTarget; zDraw(); }
+        requestAnimationFrame(zLoop);
+      }
+      if (zoomSec && zoomCanvas) {
+        zctx = zoomCanvas.getContext('2d');
+        for (var zi = 0; zi < ZN; zi++) {
+          (function (i) {
+            var im = new Image();
+            im.onload = function () { zoomFrames[i] = im; if (i === Math.round(zoomCur)) zDraw(); };
+            im.src = 'img/ofen-frames/f_' + String(i + 1).padStart(3, '0') + '.jpg';
+          })(zi);
+        }
+        zSize();
+        zoomUpdate();
+        zoomCur = zoomTarget;
+        zLoop();
+        window.addEventListener('resize', function () { zSize(); zoomUpdate(); });
+      }
+
+      var ticking = false;
+      function onScroll() {
+        if (ticking) return;
+        ticking = true;
+        requestAnimationFrame(function () {
+          var h = document.documentElement;
+          var max = h.scrollHeight - h.clientHeight;
+          progress.style.transform = 'scaleX(' + (max > 0 ? window.scrollY / max : 0) + ')';
+          header.classList.toggle('shadow-md', window.scrollY > 10);
+
+          if (zoomSec) zoomUpdate();
+
+          if (statement && !reduce) {
+            var r = statement.getBoundingClientRect();
+            var vh = window.innerHeight;
+            var p = (vh * 0.85 - r.top) / (r.height + vh * 0.35);
+            p = Math.min(Math.max(p, 0), 1);
+            var lit = Math.floor(p * words.length);
+            words.forEach(function (w, i) { w.style.opacity = i < lit ? 1 : 0.18; });
+          }
+          ticking = false;
+        });
+      }
+      window.addEventListener('scroll', onScroll, { passive: true });
+      window.addEventListener('resize', onScroll);
+      onScroll();
+
+      /* Scroll-Reveal */
+      var reveals = document.querySelectorAll('.reveal');
+      if (reduce || !('IntersectionObserver' in window)) {
+        reveals.forEach(function (el) { el.classList.add('is-visible'); });
+      } else {
+        var io = new IntersectionObserver(function (entries) {
+          entries.forEach(function (e) {
+            if (e.isIntersecting) {
+              e.target.classList.add('is-visible');
+              io.unobserve(e.target);
+            }
+          });
+        }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+        reveals.forEach(function (el) { io.observe(el); });
+      }
+
+      /* Zählende Zahlen */
+      function format(v, d) { return v.toFixed(d).replace('.', ','); }
+      if (!reduce && 'IntersectionObserver' in window) {
+        var counters = document.querySelectorAll('[data-count]');
+        var cio = new IntersectionObserver(function (entries) {
+          entries.forEach(function (e) {
+            if (!e.isIntersecting) return;
+            cio.unobserve(e.target);
+            var el = e.target;
+            var target = parseFloat(el.dataset.count);
+            var d = parseInt(el.dataset.decimals || '0', 10);
+            var start = performance.now();
+            function frame(now) {
+              var t = Math.min((now - start) / 1400, 1);
+              var eased = 1 - Math.pow(1 - t, 3);
+              el.textContent = format(target * eased, d);
+              if (t < 1) requestAnimationFrame(frame);
+            }
+            requestAnimationFrame(frame);
+          });
+        }, { threshold: 0.5 });
+        counters.forEach(function (el) {
+          el.textContent = format(0, parseInt(el.dataset.decimals || '0', 10));
+          cio.observe(el);
+        });
+      }
+
+      /* Laufband: Inhalte einmal duplizieren, damit die Schleife nahtlos läuft */
+      var track = document.getElementById('marquee-a');
+      if (track) {
+        Array.prototype.slice.call(track.children).forEach(function (img) {
+          var copy = img.cloneNode(true);
+          copy.setAttribute('aria-hidden', 'true');
+          copy.alt = '';
+          track.appendChild(copy);
+        });
+      }
+
+      /* Mobile Navigation */
+      var toggle = document.getElementById('nav-toggle');
+      var mobileNav = document.getElementById('mobile-nav');
+      toggle.addEventListener('click', function () {
+        var open = mobileNav.classList.toggle('hidden') === false;
+        toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+        toggle.setAttribute('aria-label', open ? 'Menü schließen' : 'Menü öffnen');
+      });
+      mobileNav.querySelectorAll('a').forEach(function (a) {
+        a.addEventListener('click', function () {
+          mobileNav.classList.add('hidden');
+          toggle.setAttribute('aria-expanded', 'false');
+        });
+      });
+
+      /* Projekt-Finder */
+      var state = { fuel: null, place: null };
+      var placeWrap = document.getElementById('finder-place-wrap');
+      var result = document.getElementById('finder-result');
+      var options = {
+        kaminofen: { name: 'Kaminofen', text: 'Ein freistehender Ofen mit echtem Holzfeuer. Passt, wenn Sie Flamme, Knistern und Aroma wollen und keinen Einbau in eine Wand planen.', value: 'Kaminofen' },
+        kamineinsatz: { name: 'Kamineinsatz', text: 'Ein Holzeinsatz für eine bestehende Feuerstelle. Passt, wenn Sie einen vorhandenen Kamin nutzen oder modernisieren möchten.', value: 'Kamineinsatz' },
+        pelletofen: { name: 'Pelletofen', text: 'Brennt mit Holzpellets. Eine gute Wahl, wenn Sie lieber mit Pellets arbeiten als mit Holzscheiten.', value: 'Pelletofen' },
+        gaskamin: { name: 'Gaskamin', text: 'Praktisch und einfach zu bedienen, ohne Holz lagern zu müssen. Ideal für alle, die den Komfort einer Flamme möchten.', value: 'Gaskamin' },
+        warmluftofen: { name: 'Warmluftofen', text: 'Gibt die Wärme über warme Luft ab. Passt, wenn Sie vor allem Heizwärme für Ihre Räume suchen.', value: 'Warmluftofen' }
+      };
+
+      function pick(group, attr, value) {
+        group.querySelectorAll('button').forEach(function (b) {
+          var on = b.dataset[attr] === value;
+          b.classList.toggle('border-brand', on);
+          b.classList.toggle('bg-brand/5', on);
+          b.setAttribute('aria-pressed', on ? 'true' : 'false');
+        });
+      }
+
+      function refresh() {
+        var key = null;
+        if (state.fuel === 'holz') {
+          if (state.place === 'frei') key = 'kaminofen';
+          if (state.place === 'einsatz') key = 'kamineinsatz';
+        } else if (state.fuel === 'pellet') key = 'pelletofen';
+        else if (state.fuel === 'gas') key = 'gaskamin';
+        else if (state.fuel === 'warmluft') key = 'warmluftofen';
+
+        if (key) {
+          document.getElementById('finder-name').textContent = options[key].name;
+          document.getElementById('finder-text').textContent = options[key].text;
+          result.dataset.key = key;
+          result.classList.remove('hidden');
+        } else {
+          result.classList.add('hidden');
+        }
+      }
+
+      document.querySelectorAll('#finder-fuel button').forEach(function (b) {
+        b.setAttribute('aria-pressed', 'false');
+        b.addEventListener('click', function () {
+          state.fuel = b.dataset.fuel;
+          state.place = null;
+          pick(document.getElementById('finder-fuel'), 'fuel', state.fuel);
+          placeWrap.classList.toggle('hidden', state.fuel !== 'holz');
+          document.querySelectorAll('#finder-place button').forEach(function (p) { p.classList.remove('border-brand', 'bg-brand/5'); });
+          refresh();
+        });
+      });
+      document.querySelectorAll('#finder-place button').forEach(function (b) {
+        b.setAttribute('aria-pressed', 'false');
+        b.addEventListener('click', function () {
+          state.place = b.dataset.place;
+          pick(document.getElementById('finder-place'), 'place', state.place);
+          refresh();
+        });
+      });
+
+      /* Ergebnis in das Formular übernehmen */
+      document.getElementById('finder-ask').addEventListener('click', function () {
+        var key = result.dataset.key;
+        if (!key) return;
+        document.getElementById('f-anliegen').value = options[key].value;
+        document.getElementById('f-nachricht').value = 'Ich interessiere mich für einen ' + options[key].name + '. Bitte melden Sie sich zu einer Beratung.';
+        document.getElementById('f-name').focus({ preventScroll: true });
+        document.getElementById('kontakt').scrollIntoView({ behavior: reduce ? 'auto' : 'smooth' });
+      });
+
+      /* Kontaktformular.
+         Formularanbindung noch offen: aktuell öffnet der Button das E-Mail-Programm
+         mit der vorbereiteten Anfrage. Keine Erfolgsmeldung ohne tatsächlichen Versand. */
+      var form = document.getElementById('contact-form');
+      var status = document.getElementById('form-status');
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        if (!form.checkValidity()) {
+          form.reportValidity();
+          return;
+        }
+        var data = new FormData(form);
+        var subject = encodeURIComponent('Anfrage über die Website: ' + data.get('anliegen'));
+        var body = encodeURIComponent(
+          'Name: ' + data.get('name') + '\n' +
+          'Kontakt: ' + data.get('kontakt') + '\n' +
+          'Anliegen: ' + data.get('anliegen') + '\n\n' +
+          (data.get('nachricht') || '')
+        );
+        window.location.href = 'mailto:info@prometheus-ofenbau.de?subject=' + subject + '&body=' + body;
+        status.textContent = 'Ihr E-Mail-Programm öffnet sich mit der vorbereiteten Anfrage. Alternativ erreichen Sie uns unter 02272 40970.';
+      });
+    })();
+  </script>
+</body>
+</html>
